@@ -31,13 +31,13 @@
 (define-key org-mode-map (kbd "C-c g") 'goto-last-heading)
 
 ;; Auto saving configurations
-(setq make-backup-files t               ; backup of a file the first time it is saved.
-      version-control t                 ; version numbers for backup files
-      delete-old-versions t             ; delete excess backup files silently
-      delete-by-moving-to-trash t
-      kept-old-versions 6               ; oldest versions to keep when a new numbered backup is made (default: 2)
-      kept-new-versions 9               ; newest versions to keep when a new numbered backup is made (default: 2)
-      auto-save-default t               ; auto-save every buffer that visits a file
+;; (setq make-backup-files t               ; backup of a file the first time it is saved.
+;;      version-control t                 ; version numbers for backup files
+;;      delete-old-versions t             ; delete excess backup files silently
+;;      delete-by-moving-to-trash t
+;;      kept-old-versions 6               ; oldest versions to keep when a new numbered backup is made (default: 2)
+;;      kept-new-versions 9               ; newest versions to keep when a new numbered backup is made (default: 2)
+(setq auto-save-default t               ; auto-save every buffer that visits a file
       auto-save-timeout t   ; number of seconds idle time before auto-save (default: 30)
 ;;      auto-save-interval 200  ; number of keystrokes between auto-saves (default: 300)
       )
@@ -91,8 +91,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/Dropbox/org/todos/work.org"))
- '(package-selected-packages '(csv-mode)))
+ '(org-agenda-files '("~/org/todos/work.org"))
+ '(package-selected-packages '(ox-hugo csv-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -109,10 +109,11 @@
  
 ;; Enables basic packaging support - melpa
 (require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
-;; Adds the Melpa archive to the list of available repositories
-(add-to-list 'package-archives `("melpa" . "https://melpa.org/packages/"))
-
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
 ;; ===================================
 ;; Basic Customization
 ;; ===================================
@@ -120,4 +121,5 @@
 (setq inhibit-startup-message t)    ;; Hide the startup message
 ;; (global-linum-mode t)               ;; Enable line numbers globally
 (setq python-shell-interpreter "python3")
-
+;; Configuring spell check
+(setq ispell-program-name "/usr/local/bin/aspell")
