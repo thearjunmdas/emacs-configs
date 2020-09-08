@@ -30,7 +30,7 @@
 
 (define-key org-mode-map (kbd "C-c g") 'goto-last-heading)
 
-;; Auto saving configurations
+nnnnnnnnn;; Auto saving configurations
 ;; (setq make-backup-files t               ; backup of a file the first time it is saved.
 ;;      version-control t                 ; version numbers for backup files
 ;;      delete-old-versions t             ; delete excess backup files silently
@@ -62,6 +62,8 @@
 ;; org-mode agenda options                                                ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;To be able to override inline image size
+(setq org-image-actual-width nil)
 ;;open agenda in current window
 (setq org-agenda-window-setup (quote current-window))
 ;;warn me of any deadlines in next 7 days
