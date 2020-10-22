@@ -15,6 +15,10 @@
 (setq org-goto-interface 'outline-path-completion
       org-goto-max-level 10)
 
+;; TODO states
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "FOLLOWUP(f)" "|" "CANCELLED(c)" "DONE(d)")))
+
 ;; Set fontsize
 (set-face-attribute 'default nil :height 150)
 
@@ -29,6 +33,7 @@
   (org-end-of-subtree))
 
 (define-key org-mode-map (kbd "C-c g") 'goto-last-heading)
+
 
 ;; Auto saving configurations
 ;; (setq make-backup-files t               ; backup of a file the first time it is saved.
